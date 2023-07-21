@@ -1,0 +1,50 @@
+
+<%- include("header") -%>
+
+    <!-- <p>YAY! Its a weekend!!!</p> -->
+
+    <!-- 1 -->
+    <!-- <% if(listTitle === "Monday" || listTitle === "Sunday") { %>
+        <h1 style="color: pink;"> <%= listTitle %> ToDo List!</h1>
+    <% } else { %>
+        <h1 style="color: red;"> <%= listTitle %> ToDo List!</h1>
+    <% } %> -->
+
+    <!-- 2 -->
+
+    <div id="heading" class="box">
+       <h1><%= listTitle %></h1>
+    </div>
+
+    
+
+    <div class="box">
+        <!-- <ul> -->
+            <!-- <li>Buy Food</li>
+            <li>Cook Food</li>
+            <li>Eat Food</li> -->
+    
+            <% newListItems.forEach(function(element){ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <!-- changed it to a paragraph element -->
+                    <input type="checkbox" name="checkbox" value="<%= element._id %>" onChange="this.form.submit()">
+                    <p> <%= element.name %></p>
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>"> </input>
+            </form>
+            
+            <% } ) %>
+    
+           
+        <!-- </ul> -->
+
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" value="<%= listTitle %>" name="button">+</button>
+        </form>
+    </div>
+    
+    <%- include("footer") -%>
+   
+    
